@@ -1,0 +1,40 @@
+#!/bin/sh
+
+MSG_FILE="$1"
+MSG_CONTENT="$(cat "$MSG_FILE")"
+
+# allowed types
+VALID_TYPES="feat|fix|refactor|chore|style|test|docs|hotfix|merge"
+
+# regex: type(scope): subject #issue-number
+PATTERN="^($VALID_TYPES)\([a-zA-Z0-9._-]+\): .+ #[0-9]+$"
+
+# get first line only (subject)
+SUBJECT_LINE="$(echo "$MSG_CONTENT" | head -n1)"
+SUBJECT_LENGTH=${#SUBJECT_LINE}
+
+if [ "$SUBJECT_LENGTH" -gt 72 ]; then
+  echo "❌ Invalid commit message." >&2
+  echo "   Commit message too long ($SUBJECT_LENGTH characters)." >&2
+  echo "   Please keep the subject line ≤ 72 characters." >&2
+  exit 1
+fi
+
+if ! echo "$MSG_CONTENT" | grep -Eq "$PATTERN"; then
+  echo "❌ Invalid commit message." >&2
+  echo "   Format must be: <type>(<scope>): <subject> #<issue-number>" >&2
+  echo "   Example: feat(auth): add registration endpoint #123" >&2
+  echo "" >&2
+  echo "   ✅ Allowed types:" >&2
+  echo "   - feat      New feature e.g., feat/user-registration" >&2
+  echo "   - fix       Bug fix e.g., fix/login-error" >&2
+  echo "   - refactor  Code restructuring without changing functionality e.g., refactor/payment-module" >&2
+  echo "   - chore     Routine tasks or dependency updates e.g., chore/update-eslint-config" >&2
+  echo "   - style     Formatting, no logic changes e.g., style/fix-linting-errors" >&2
+  echo "   - test      Adding or updating tests e.g., test/add-user-service-tests" >&2
+  echo "   - docs      Documentation changes e.g., docs/update-readme" >&2
+  echo "   - hotfix    Critical production bug fix e.g., hotfix/fix-null-pointer-crash" >&2
+  exit 1
+fi
+
+exit 0
