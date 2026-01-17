@@ -1,5 +1,5 @@
 {{-- MAP + CONTACT INFO --}}
-<section class="bg-white py-16">
+<section class="py-16">
     <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {{-- MAP --}}

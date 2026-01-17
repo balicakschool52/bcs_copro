@@ -11,7 +11,7 @@
 
 <body class="bg-gray-50 min-h-screen">
     <x-navbar-section />
-    <main class="pt-20 md:pt-24">
+    <main class="pt-20 md:pt-20">
         @yield('content')
     </main>
     <x-footer-section />
