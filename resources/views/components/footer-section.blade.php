@@ -3,7 +3,7 @@
     <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {{-- MAP --}}
-        <div class="w-full h-[300px] rounded overflow-hidden border">
+        <div class="w-full h-75 rounded overflow-hidden border">
             <iframe
                 class="w-full h-full"
                 src="https://www.google.com/maps?q=Jl.%20Wisnu%20Margana%20No.39,%20Tabanan&t=&z=13&ie=UTF8&iwloc=&output=embed"
