@@ -261,5 +261,102 @@
         </div>
     </section>
 
+    <section id="achievement" class="relative min-h-screen scroll-mt-24  overflow-hidden">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
+            <div class="text-start space-y-4 mb-10 md:mb-16">
+                <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
+                    Becoming a Part of a Greater Journey
+                </p>
+                <p class="text-2xl lg:text-4xl font-semibold text-gray-700 -mt-4">
+                    Bali Cak Tourism School
+                </p>
+                <p class="text-gray-400 text-sm lg:text-md leading-relaxed max-w-3xl italic">
+                    Reflects the role of alumni in continuing the legacy—bringing the values and spirit of campus life into
+                    every step of their journey
+                </p>
+            </div>
+
+            @php
+                $achievementSlides = [
+                    [
+                        'tag' => 'Competition',
+                        'title' => '1st Place Barista Challenge 2024',
+                        'copy' => 'Beverage team showcased signature menus elevating Bali flavors.',
+                        'badge' => 'F&B',
+                        'image' => 'images/about1.png',
+                    ],
+                    [
+                        'tag' => 'Internship',
+                        'title' => 'Placements at five-star hotel network',
+                        'copy' => '50 students accepted for internships in Bali, Jakarta, and Singapore.',
+                        'badge' => 'Career',
+                        'image' => 'images/about1.png',
+                    ],
+                    [
+                        'tag' => 'Event',
+                        'title' => 'Protocol & Event Management Showcase',
+                        'copy' => 'Students managed an international event with 500+ attendees.',
+                        'badge' => 'Event',
+                        'image' => 'images/about1.png',
+                    ],
+                    [
+                        'tag' => 'Scholarship',
+                        'title' => 'Merit Scholarship Cohort 2025',
+                        'copy' => '25 students awarded tuition support after portfolio & interview review.',
+                        'badge' => 'Support',
+                        'image' => 'images/about1.png',
+                    ],
+                ];
+            @endphp
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach ($achievementSlides as $slide)
+                    <article class="flex justify-center" data-slide>
+                        <div
+                            class="relative w-full max-w-[320px] sm:max-w-90 rounded-2xl overflow-hidden bg-white shadow-lg">
+                            <img src="{{ asset($slide['image']) }}" alt="{{ $slide['tag'] }}"
+                                class="w-full h-105 object-cover">
+                            <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent"></div>
+                            <div class="absolute bottom-0 p-5 text-white space-y-2">
+                                <span class="text-sm text-gray-300">
+                                    {{ $slide['tag'] }}
+                                </span>
+                                <h3 class="text-lg font-semibold leading-snug">
+                                    {{ $slide['title'] }}
+                                </h3>
+                                <p class="text-sm text-gray-200 leading-relaxed line-clamp-3">
+                                    {{ $slide['copy'] }}
+                                </p>
+                                <span
+                                    class="inline-block mt-2 px-3 py-1 text-xs font-medium rounded-full bg-blue-600 text-white">
+                                    {{ $slide['badge'] }}
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section id="lecture" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
+            <div class="text-center space-y-4 mb-10 md:mb-16">
+                <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
+                    Bali Cak Tourism School
+                </p>
+                <p class="text-2xl lg:text-4xl font-semibold text-white -mt-4 ">
+                    Greeting With Our Lecturer
+                </p>
+                <p class="text-gray-400 text-sm lg:text-md leading-relaxed max-w-3xl mx-auto">
+                    Reflects the role of alumni in continuing the legacy—bringing the values and spirit of campus life into
+                    every step of their journey
+                </p>
+            </div>
+
+
+            <div class="grid grid-cols-1 gap-8">
+
+            </div>
+        </div>
+    </section>
 
 @endsection
