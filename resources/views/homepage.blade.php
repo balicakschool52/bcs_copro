@@ -389,7 +389,7 @@
                             <div class="min-w-full md:min-w-[calc(50%-12px)] bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-lg  transition duration-300 relative overflow-hidden"
                                 data-lecturer-card>
                                 <div
-                                    class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-linear-to-br from-[#E3B04B]/30 to-orange-500/20 blur-3xl">
+                                    class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-[#E3B04B]/30 to-orange-500/20 blur-3xl">
                                 </div>
                                 <div class="flex items-center gap-4 relative z-10">
                                     <div
@@ -435,43 +435,54 @@
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const track = document.querySelector('[data-lecturer-track]');
-                if (!track) return;
+            const track = document.querySelector('[data-lecturer-track]');
+            if (!track) return;
 
-                const cards = Array.from(track.querySelectorAll('[data-lecturer-card]'));
-                const dots = Array.from(document.querySelectorAll('[data-lecturer-dot]'));
-                let activeIndex = 0;
+            const cards = Array.from(track.querySelectorAll('[data-lecturer-card]'));
+            const dots = Array.from(document.querySelectorAll('[data-lecturer-dot]'));
+            let activeIndex = 0;
+            let autoTimer;
 
-                const setActiveDot = (index) => {
-                    dots.forEach((dot, i) => {
-                        dot.classList.toggle('bg-[#E3B04B]', i === index);
-                        dot.classList.toggle('bg-white/20', i !== index);
-                    });
-                };
-
-                const slideTo = (index) => {
-                    if (!cards.length) return;
-                    const gap = 24; // matches gap-6
-                    const amount = cards[0].clientWidth + gap;
-                    activeIndex = Math.min(Math.max(index, 0), dots.length - 1);
-                    track.style.transform = `translateX(-${activeIndex * amount}px)`;
-                    setActiveDot(activeIndex);
-                };
-
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        slideTo(index);
-                    });
+            const setActiveDot = (index) => {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-[#E3B04B]', i === index);
+                    dot.classList.toggle('bg-white/20', i !== index);
                 });
+            };
 
-                window.addEventListener('resize', () => {
-                    // Recalculate on resize to keep alignment
-                    slideTo(activeIndex);
+            const slideTo = (index) => {
+                if (!cards.length) return;
+                const gap = 24; // matches gap-6
+                const amount = cards[0].clientWidth + gap;
+                activeIndex = Math.min(Math.max(index, 0), dots.length - 1);
+                track.style.transform = `translateX(-${activeIndex * amount}px)`;
+                setActiveDot(activeIndex);
+            };
+
+            const restartAutoSlide = () => {
+                if (autoTimer) window.clearInterval(autoTimer);
+                autoTimer = window.setInterval(() => {
+                    const next = (activeIndex + 1) % cards.length;
+                    slideTo(next);
+                }, 5000);
+            };
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    slideTo(index);
+                    restartAutoSlide();
                 });
-
-                slideTo(0);
             });
-        </script>
-    @endpush
+
+            window.addEventListener('resize', () => {
+                // Recalculate on resize to keep alignment
+                slideTo(activeIndex);
+            });
+
+            slideTo(0);
+            restartAutoSlide();
+        });
+    </script>
+@endpush
 
 @endsection
