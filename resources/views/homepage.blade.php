@@ -79,7 +79,7 @@
                 <div class="space-y-6 text-center md:text-left">
                     <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase text-left">About Us
                     </p>
-                    <p class="text-2xl lg:text-4xl font-semibold text-gray-800 leading-tight text-left">
+                    <p class="text-2xl lg:text-4xl font-semibold text-gray-800 leading-tight text-left -mt-7">
                         Bali Cak Tourism School
                     </p>
                     <p class="text-gray text-sm lg:text-md leading-relaxed text-justify">
