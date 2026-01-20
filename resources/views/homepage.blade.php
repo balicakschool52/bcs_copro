@@ -369,7 +369,7 @@
                         'quote' =>
                             '“Taste, storytelling, and service choreography create the kind of experience guests never forget.”',
                         'photo' =>
-                            'https://images.unsplash.com/photo-1524500365302-00c0b02f55a3?auto=format&fit=crop&w=900&q=80',
+                            'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
                     ],
                     [
                         'name' => 'Dewa Pramana',
@@ -389,11 +389,11 @@
                             <div class="min-w-full md:min-w-[calc(50%-12px)] bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-lg  transition duration-300 relative overflow-hidden"
                                 data-lecturer-card>
                                 <div
-                                    class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-[#E3B04B]/30 to-orange-500/20 blur-3xl">
+                                    class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-linear-to-br from-[#E3B04B]/30 to-orange-500/20 blur-3xl">
                                 </div>
                                 <div class="flex items-center gap-4 relative z-10">
                                     <div
-                                        class="h-75 w-50 rounded-[20px] overflow-hidden ring-2 ring-[#E3B04B]/50 flex-shrink-0">
+                                        class="h-75 w-50 rounded-[20px] overflow-hidden ring-2 ring-[#E3B04B]/50 shrink-0">
                                         <img src="{{ $lecturer['photo'] }}" alt="{{ $lecturer['name'] }}"
                                             class="h-full w-full object-cover">
                                     </div>
@@ -432,57 +432,139 @@
         </div>
     </section>
 
+    <section id="blog" class="relative min-h-screen scroll-mt-24 overflow-hidden">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
+            <div class="text-start space-y-4 mb-10 md:mb-16">
+                <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
+                    Activity Of
+                </p>
+                <p class="text-2xl lg:text-4xl font-semibold text-gray-800 -mt-4 ">
+                    Bali Cak Tourism School
+                </p>
+                <p class="text-gray-400 text-sm lg:text-md leading-relaxed max-w-3xl">
+                    Capturing moments of learning, creativity, and togetherness where students grow,
+                    explore their potential, and prepare themselves for a successful future in tourism
+                    and hospitality industries.
+                </p>
+            </div>
+
+            @php
+                $blogs = [
+                    [
+                        'title' => 'Wisuda ke 4 Tahun Bali Cak Tourism School',
+                        'sub_title' => 'Sekitar 300 orang hadir dalam wisuda kali ini Bali Cak School menjadi
+                                saksi perjalanan para alumni menuju dunia profesional.',
+                        'date' => 'August 30, 2025',
+                        'photo' =>
+                            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80',
+                    ],
+                    [
+                        'title' => 'Wisuda ke 4 Tahun Bali Cak Tourism School',
+                        'sub_title' => 'Sekitar 300 orang hadir dalam wisuda kali ini Bali Cak School menjadi
+                                saksi perjalanan para alumni menuju dunia profesional.',
+                        'date' => 'August 30, 2025',
+                        'photo' =>
+                            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80',
+                    ],
+                    [
+                        'title' => 'Wisuda ke 4 Tahun Bali Cak Tourism School',
+                        'sub_title' => 'Sekitar 300 orang hadir dalam wisuda kali ini Bali Cak School menjadi
+                                saksi perjalanan para alumni menuju dunia profesional.',
+                        'date' => 'August 30, 2025',
+                        'photo' =>
+                            'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80',
+                    ],
+                ];
+            @endphp
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach ($blogs as $item)
+                    <div class="bg-[#2B2B28] rounded-3xl overflow-hidden shadow-lg group transition">
+                        <!-- Image -->
+                        <div class="relative h-70 overflow-hidden">
+                            <img src={{ $item['photo'] }} alt="Activity Image"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 flex flex-col justify-between min-h-55">
+                            <div>
+                                <h3 class="text-[#E3B04B] font-semibold text-sm uppercase leading-snug">
+                                    {{ $item['title'] }}
+                                </h3>
+                                <p class="text-gray-200 text-sm mt-2 leading-relaxed line-clamp-3">
+                                    {{ $item['sub_title'] }}
+                                </p>
+                            </div>
+
+                            <div class="flex items-center justify-between mt-6">
+                                <span class="text-xs text-gray-400 uppercase tracking-wide">
+                                    {{ $item['date'] }}
+                                </span>
+                                <a href="#"
+                                    class="text-sm font-semibold text-white flex items-center gap-1 hover:text-[#E3B04B] transition">
+                                    Read More
+                                    <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-            const track = document.querySelector('[data-lecturer-track]');
-            if (!track) return;
+                const track = document.querySelector('[data-lecturer-track]');
+                if (!track) return;
 
-            const cards = Array.from(track.querySelectorAll('[data-lecturer-card]'));
-            const dots = Array.from(document.querySelectorAll('[data-lecturer-dot]'));
-            let activeIndex = 0;
-            let autoTimer;
+                const cards = Array.from(track.querySelectorAll('[data-lecturer-card]'));
+                const dots = Array.from(document.querySelectorAll('[data-lecturer-dot]'));
+                let activeIndex = 0;
+                let autoTimer;
 
-            const setActiveDot = (index) => {
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('bg-[#E3B04B]', i === index);
-                    dot.classList.toggle('bg-white/20', i !== index);
+                const setActiveDot = (index) => {
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-[#E3B04B]', i === index);
+                        dot.classList.toggle('bg-white/20', i !== index);
+                    });
+                };
+
+                const slideTo = (index) => {
+                    if (!cards.length) return;
+                    const gap = 24; // matches gap-6
+                    const amount = cards[0].clientWidth + gap;
+                    activeIndex = Math.min(Math.max(index, 0), dots.length - 1);
+                    track.style.transform = `translateX(-${activeIndex * amount}px)`;
+                    setActiveDot(activeIndex);
+                };
+
+                const restartAutoSlide = () => {
+                    if (autoTimer) window.clearInterval(autoTimer);
+                    autoTimer = window.setInterval(() => {
+                        const next = (activeIndex + 1) % cards.length;
+                        slideTo(next);
+                    }, 5000);
+                };
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        slideTo(index);
+                        restartAutoSlide();
+                    });
                 });
-            };
 
-            const slideTo = (index) => {
-                if (!cards.length) return;
-                const gap = 24; // matches gap-6
-                const amount = cards[0].clientWidth + gap;
-                activeIndex = Math.min(Math.max(index, 0), dots.length - 1);
-                track.style.transform = `translateX(-${activeIndex * amount}px)`;
-                setActiveDot(activeIndex);
-            };
-
-            const restartAutoSlide = () => {
-                if (autoTimer) window.clearInterval(autoTimer);
-                autoTimer = window.setInterval(() => {
-                    const next = (activeIndex + 1) % cards.length;
-                    slideTo(next);
-                }, 5000);
-            };
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    slideTo(index);
-                    restartAutoSlide();
+                window.addEventListener('resize', () => {
+                    // Recalculate on resize to keep alignment
+                    slideTo(activeIndex);
                 });
-            });
 
-            window.addEventListener('resize', () => {
-                // Recalculate on resize to keep alignment
-                slideTo(activeIndex);
+                slideTo(0);
+                restartAutoSlide();
             });
-
-            slideTo(0);
-            restartAutoSlide();
-        });
-    </script>
-@endpush
+        </script>
+    @endpush
 
 @endsection
