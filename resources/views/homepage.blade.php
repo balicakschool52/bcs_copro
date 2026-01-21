@@ -108,9 +108,9 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-30 bg-[#2B2B28] lg:mt-24 md:mt-20"></div>
     </section>
-    <section id="education" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden">
+    <div class="w-full h-30 bg-[#2B2B28] "></div>
+    <section id="education" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden -mt-1">
         <!-- Decorative Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <!-- Glow kiri -->
