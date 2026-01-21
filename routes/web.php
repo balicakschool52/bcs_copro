@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/education', function () {
     return view('user-page.education.index');
 });
+Route::get('/about-us', function () {
+    return view('user-page.about-us.index');
+});
