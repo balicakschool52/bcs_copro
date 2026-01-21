@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,9 +15,14 @@ return new class extends Migration
         Schema::create('study_programs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('grade', ['1', '2'])->comment('1 = Basic, 2 = Middle');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'modified_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'deleted_by')->nullable()->constrained('users', 'id');
         });
     }
 

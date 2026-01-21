@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateStudyProgramRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateStudyProgramRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class UpdateStudyProgramRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', Rule::unique('study_programs')->ignore($this->study_program->id)->whereNull('deleted_at')],
+            'grade' => ['required', Rule::in([1, 2])]
         ];
     }
 }

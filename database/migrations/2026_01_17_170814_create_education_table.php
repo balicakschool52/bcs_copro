@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('grade', ['1', '2'])->comment('1 = Basic, 2 = Middle');
+            $table->string('description');
+            $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
