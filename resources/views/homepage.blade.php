@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Homepage')
+@section('title', 'Homepage | Bali Cak Tourism School')
 
 @section('content')
     <section class="bg-[#2B2B28] w-full min-h-screen flex items-center scroll-mt-24">

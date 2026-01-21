@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Education-Page')
+@section('title', 'Education | Bali Cak Tourism School')
 
 @section('content')
     @include('user-page.education.partials.hero-section')
