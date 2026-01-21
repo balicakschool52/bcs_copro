@@ -45,10 +45,11 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-            <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">Beranda</a>
-            <a href="#prestasi" class="block py-2  text-white hover:text-blue-600">Daftar
-                Prestasi</a>
-            <a href="#masuk" class="block py-2  text-white hover:text-blue-600">Masuk</a>
+            <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">Home</a>
+            <a href="#" class="block py-2  text-white hover:text-blue-600">Education</a>
+            <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">About Us</a>
+            <a href="#" class="block py-2  text-white hover:text-blue-600">Campus Life</a>
+            <a href="#masuk" class="block py-2  text-white hover:text-blue-600">Contact Us</a>
         </div>
     </div>
 </nav>

@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-30 bg-[#2B2B28] lg:mt-24"></div>
+        <div class="w-full h-30 bg-[#2B2B28] lg:mt-24 md:mt-20"></div>
     </section>
     <section id="education" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden">
         <!-- Decorative Background -->
