@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreStudyProgramRequest;
 use App\Http\Requests\UpdateStudyProgramRequest;
 use App\Models\StudyProgram;
+use Illuminate\Support\Facades\DB;
 
 class StudyProgramController extends Controller
 {
@@ -13,7 +15,8 @@ class StudyProgramController extends Controller
      */
     public function index()
     {
-        //
+        $studyProgram = StudyProgram::all();
+        return ResponseFormatter::success($studyProgram, 'Success get data study program');
     }
 
     /**
@@ -29,16 +32,25 @@ class StudyProgramController extends Controller
      */
     public function store(StoreStudyProgramRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $studyProgram = StudyProgram::create([
+                'name' => $request->name,
+                'grade' => $request->grade
+            ]);
+
+            DB::commit();
+            return ResponseFormatter::success($studyProgram, config('messages.SUCCESS_CREATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(StudyProgram $studyProgram)
-    {
-        //
-    }
+    public function show(StudyProgram $studyProgram) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -53,7 +65,19 @@ class StudyProgramController extends Controller
      */
     public function update(UpdateStudyProgramRequest $request, StudyProgram $studyProgram)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $studyProgram->update([
+                'name' => $request->name,
+                'grade' => $request->grade
+            ]);
+
+            DB::commit();
+            return ResponseFormatter::success($studyProgram, config('messages.SUCCESS_UPDATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +85,15 @@ class StudyProgramController extends Controller
      */
     public function destroy(StudyProgram $studyProgram)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $studyProgram->delete();
+
+            DB::commit();
+            return ResponseFormatter::success(null, config('messages.SUCCESS_DELETE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 }

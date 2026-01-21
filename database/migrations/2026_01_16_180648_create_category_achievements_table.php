@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
             $table->foreignIdFor(User::class, 'modified_by')->nullable()->constrained('users', 'id');
             $table->foreignIdFor(User::class, 'deleted_by')->nullable()->constrained('users', 'id');
