@@ -14,7 +14,7 @@
                     class="text-white hover:text-[#E3B04B] transition text-sm md:text-xs lg:text-sm">
                     Home
                 </a>
-                <a href="#"
+                <a href="{{ url('education') }}"
                     class="text-white hover:text-[#E3B04B] transition text-sm md:text-xs lg:text-sm">
                     Education
                 </a>
@@ -46,7 +46,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
             <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">Home</a>
-            <a href="#" class="block py-2  text-white hover:text-blue-600">Education</a>
+            <a href="{{ url('/education') }}" class="block py-2  text-white hover:text-blue-600">Education</a>
             <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">About Us</a>
             <a href="#" class="block py-2  text-white hover:text-blue-600">Campus Life</a>
             <a href="#masuk" class="block py-2  text-white hover:text-blue-600">Contact Us</a>

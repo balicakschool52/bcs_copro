@@ -1,0 +1,15 @@
+@extends('layouts.main')
+
+@section('title', 'Education-Page')
+
+@section('content')
+    @include('user-page.education.partials.hero-section')
+    @include('user-page.education.partials.greeting-education-section')
+    @include('user-page.education.partials.education-section')
+    @include('user-page.education.partials.partnership-section')
+
+
+    @push('scripts')
+        @vite('resources/js/pages/user-pages/education/index.js')
+    @endpush
+@endsection
