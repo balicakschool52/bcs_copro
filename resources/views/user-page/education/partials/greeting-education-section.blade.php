@@ -35,7 +35,7 @@
 
                 <div class="relative order-2 md:order-1 ">
                     <div
-                        class="absolute -inset-6 bg-linear-to-br from-white/5 via-white/0 to-white/5 rounded-3xl blur-3xl">
+                        class="absolute -inset-6 bg-linear-to-br from-white/5 via-white/0  rounded-3xl blur-3xl">
                     </div>
                     <div
                         class="relative bg-white/5 border border-white/10 rounded-3xl p-4 md:p-5 shadow-2xl backdrop-blur-xl overflow-hidden">
