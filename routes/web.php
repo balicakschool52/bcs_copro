@@ -12,3 +12,12 @@ Route::get('/education', function () {
 Route::get('/about-us', function () {
     return view('user-page.about-us.index');
 });
+Route::get('/campus-life', function () {
+    return view('user-page.campus-life.index');
+});
+Route::get('/activity-detail', function () {
+    return view('user-page.campus-life.detail');
+});
+Route::get('/registration', function () {
+    return view('user-page.registration.index');
+});

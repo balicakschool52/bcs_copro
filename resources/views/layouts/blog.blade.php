@@ -15,8 +15,6 @@
     <x-navbar-section />
     <main class="pt-20 md:pt-20">
         @yield('content')
-
-        <x-partnertship-section/>
     </main>
     <x-footer-section />
     @stack('scripts')
