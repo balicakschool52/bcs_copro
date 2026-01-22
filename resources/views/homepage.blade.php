@@ -16,7 +16,7 @@
                         Committed to excellence, we ensure quality today to build a brighter and more sustainable future.
                     </p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <a href="#masuk"
+                        <a href="{{ url('registration') }}"
                             class="inline-flex items-center gap-2 bg-[#E3B04B] text-white px-5 py-3 rounded-full shadow-lg shadow-gray-900 hover:bg-yellow-400 transition">
                             Register Now
                         </a>
@@ -63,7 +63,7 @@
                                             <p class="text-sm text-gray-500">Coach with 10+ years of experience.</p>
                                         </div>
                                     </div>
-                                    <a href="#"> <button class="bg-blue-600 rounded-xl p-2 w-full text-white">
+                                    <a href="{{ url('registration') }}"> <button class="bg-blue-600 rounded-xl p-2 w-full text-white">
                                             Registration</button></a>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                     <p class="text-gray text-sm lg:text-md leading-relaxed text-justify">
                         Our mission is to empower the younger generation to achieve successful careers and contribute to the
                         sustainable growth of the tourism industry. </p>
-                    <a href="#"
+                    <a href="{{ url('about-us') }}"
                         class="inline-flex items-center gap-2 bg-[#2B2B28] text-white px-5 py-3 rounded-full shadow-lg shadow-gray-900 hover:bg-gray-9  00 transition">
                         Show More
                         <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>

@@ -18,7 +18,7 @@
                     to master confidence before stepping into the industry.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#student-activities"
+                    <a href="#activity"
                         class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#E3B04B] text-[#2B2B28] font-semibold shadow-lg shadow-[#E3B04B]/30 hover:translate-y-0.5 transition">
                         Explore Activities
                         <i data-lucide="sparkles" class="w-4 h-4"></i>

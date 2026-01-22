@@ -24,13 +24,7 @@
                     dreams in
                     international hospitality and maritime careers.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#partnership"
-                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#E3B04B] text-[#2B2B28] font-semibold shadow-lg shadow-[#E3B04B]/30 hover:translate-y-0.5 transition">
-                        Show More
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
+
             </div>
 
             <div class="relative order-2 md:order-1 ">

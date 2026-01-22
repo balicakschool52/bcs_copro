@@ -1,4 +1,4 @@
- <section id="blog" class="relative min-h-screen scroll-mt-24 overflow-hidden">
+ <section id="activity" class="relative min-h-screen scroll-mt-24 overflow-hidden">
      <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
          <div class="text-start space-y-4 mb-10 md:mb-16">
              <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
