@@ -22,9 +22,13 @@
                     class="text-white hover:text-[#E3B04B] transition text-sm md:text-xs lg:text-sm">
                     About Us
                 </a>
-                <a href="#"
+                <a href="{{ url('campus-life') }}"
                     class="text-white hover:text-[#E3B04B] transition text-sm md:text-xs lg:text-sm">
                     Campus Life
+                </a>
+                <a href="{{ url('registration') }}"
+                    class="bg-[#E3B04B] text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition text-sm md:text-xs lg:text-sm">
+                    Registration
                 </a>
                 <a href="#"
                     class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition text-sm md:text-xs lg:text-sm">
@@ -48,7 +52,8 @@
             <a href="{{ url('/') }}" class="block py-2 text-white hover:text-blue-600">Home</a>
             <a href="{{ url('/education') }}" class="block py-2  text-white hover:text-blue-600">Education</a>
             <a href="{{ url('/about-us') }}" class="block py-2 text-white hover:text-blue-600">About Us</a>
-            <a href="#" class="block py-2  text-white hover:text-blue-600">Campus Life</a>
+            <a href="{{ url('/campus-life') }}" class="block py-2  text-white hover:text-blue-600">Campus Life</a>
+            <a href="{{ url('/registration') }}" class="block py-2  text-white hover:text-blue-600">Registration</a>
             <a href="#masuk" class="block py-2  text-white hover:text-blue-600">Contact Us</a>
         </div>
     </div>

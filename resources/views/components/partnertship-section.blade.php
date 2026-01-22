@@ -114,12 +114,7 @@
                 <a href="#"
                     class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#E3B04B] text-white font-semibold hover:bg-yellow-400 transition">
                     <i data-lucide="handshake" class="w-4 h-4"></i>
-                    Schedule a Call
-                </a>
-                <a href="#"
-                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/30 text-white font-semibold hover:border-white/60 transition">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                    Request Info
+                   Contact Us
                 </a>
             </div>
         </div>

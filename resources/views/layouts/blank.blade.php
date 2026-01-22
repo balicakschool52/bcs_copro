@@ -12,13 +12,9 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen">
-    <x-navbar-section />
-    <main class="pt-20 md:pt-20">
+    <main class="">
         @yield('content')
-
-        <x-partnertship-section/>
     </main>
-    <x-footer-section />
     @stack('scripts')
 </body>
 
