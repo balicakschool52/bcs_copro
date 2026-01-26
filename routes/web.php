@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudyProgramController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,3 +26,5 @@ Route::get('/registration', function () {
 Route::get('/admin', function () {
     return view('admin-page.dashboard');
 });
+
+Route::resource('/admin/study-program', StudyProgramController::class);

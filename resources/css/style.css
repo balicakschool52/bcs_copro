@@ -1,0 +1,45 @@
+/* Datatable */
+
+/* Search */
+.dataTables_filter input {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.dataTables_filter input:focus {
+    border-color: #e3b04b;
+}
+
+/* Pagination */
+.dataTables_paginate {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.dataTables_paginate .paginate_button {
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #374151 !important;
+    font-size: 0.875rem;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: #e3b04b !important;
+    border-color: #e3b04b;
+    color: #1f2937 !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: #f3f4f6 !important;
+}
+
+.dataTables_info {
+    font-size: 0.875rem;
+    color: #6b7280;
+}

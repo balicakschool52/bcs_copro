@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <title>@yield('title', 'Bali Cak Tourism School')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body class="bg-gray-50 min-h-screen">
