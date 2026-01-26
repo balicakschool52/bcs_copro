@@ -10,7 +10,7 @@
                     'active' => request()->is('admin'),
                 ],
                 [
-                    'label' => 'Pendaftaran',
+                    'label' => 'Registration',
                     'url' => url('/admin/registrations'),
                     'icon' => 'clipboard-list',
                     'active' => request()->is('admin/registrations*'),
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <nav class="px-4 py-6">
+        <nav class="px-4 py-6 overflow-y-auto h-[calc(100vh-180px)] md:h-[calc(100vh-140px)]">
             @foreach ($adminMenus as $group)
                 {{-- Sidebar Label --}}
                 <p class="sidebar-label px-2 pb-3 text-xs uppercase tracking-[0.2em] text-gray-400">
@@ -107,15 +107,11 @@
                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
                     </svg>
                 </span>
-                <span class="sidebar-label">Keluar</span>
+                <span class="sidebar-label">Logout</span>
             </a>
         </div>
     </aside>
 </div>
-
-<style>
-    @media (min-width: 768px) {}
-</style>
 
 @push('scripts')
     <script>

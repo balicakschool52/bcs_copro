@@ -3,7 +3,7 @@
 @section('title', 'Study Program | Bali Cak Tourism School')
 
 @section('content')
-    <div class="px-4 py-6 md:px-30 md:py-10 space-y-6">
+    <div class="px-4 py-6 lg:px-10 xl:px-30 md:py-8 space-y-6">
         {{-- TABLE --}}
         <div class="bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200  flex justify-between items-center gap-2 text-sm text-gray-600 mb-2">

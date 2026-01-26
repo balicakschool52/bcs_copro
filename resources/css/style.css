@@ -43,3 +43,30 @@
     font-size: 0.875rem;
     color: #6b7280;
 }
+
+/* sidebar */
+
+#admin-sidebar nav {
+    scrollbar-width: thin;
+    scrollbar-color: #e3b04b transparent;
+}
+
+#admin-sidebar nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+#admin-sidebar nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#admin-sidebar nav::-webkit-scrollbar-thumb {
+    background: #e3b04b;
+    border-radius: 9999px;
+}
+
+#admin-sidebar nav::-webkit-scrollbar-thumb:hover {
+    background: #f0c96c;
+}
+
+@media (min-width: 768px) {
+}
