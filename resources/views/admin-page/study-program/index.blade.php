@@ -8,11 +8,11 @@
         <div class="bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200  flex justify-between items-center gap-2 text-sm text-gray-600 mb-2">
                 <p class="text-lg">Study Program</p>
-                <a href="#"
+                <button type="button" data-study-program-create
                     class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-3 rounded-2xl shadow-lg  hover:bg-green-500 transition">
                     <i data-lucide="plus" class="h-4 w-4"></i>
                     Create Data
-                </a>
+                </button>
             </div>
 
             <div class="overflow-x-auto p-3">
@@ -41,14 +41,19 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 text-gray-600 space-x-2">
-                                    <a href="#"
+                                    <button type="button" data-study-program-edit
+                                        data-id="{{ $program->id }}"
+                                        data-name="{{ $program->name }}"
+                                        data-grade="{{ $program->grade }}"
                                         class="inline-flex items-center gap-2 text-yellow-600 hover:text-yellow-500 transition">
                                         <i data-lucide="edit-2" class="h-4 w-4"></i>
-                                    </a>
-                                    <a href="#"
+                                    </button>
+                                    <button type="button" data-study-program-delete
+                                        data-id="{{ $program->id }}"
+                                        data-name="{{ $program->name }}"
                                         class="inline-flex items-center gap-2 text-red-600 hover:text-red-500 transition">
                                         <i data-lucide="trash-2" class="h-4 w-4"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         @empty
@@ -63,6 +68,8 @@
             </div>
         </div>
     </div>
+
+    @include('admin-page.study-program.partials.modal-create-data')
 
     @push('scripts')
         @vite('resources/js/pages/admin-pages/study-program/index.js')

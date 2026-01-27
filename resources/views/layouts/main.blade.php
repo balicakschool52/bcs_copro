@@ -11,7 +11,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-white min-h-screen">
     <x-navbar-section />
     <main class="pt-20 md:pt-20">
         @yield('content')
