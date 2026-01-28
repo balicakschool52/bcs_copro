@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-white min-h-screen">
     <x-sidebar-section />
     <main id="admin-main" class="pt-20 md:ml-64 md:pt-8">
         @yield('content')

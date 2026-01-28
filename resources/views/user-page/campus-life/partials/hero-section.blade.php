@@ -1,7 +1,6 @@
 <section id="hero-section"
     class="relative bg-[#2B2B28] w-full min-h-screen flex items-center overflow-hidden scroll-mt-24">
     <div class="container mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-16 md:pt-20 relative">
-        <div class="absolute -top-24 -left-16 h-64 w-64 bg-[#E3B04B]/20 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-10 right-0 h-72 w-72 bg-white/5 rounded-full blur-3xl"></div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
             <div class="space-y-6">
