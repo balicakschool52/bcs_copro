@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreVisionAndMissionRequest;
 use App\Http\Requests\UpdateVisionAndMissionRequest;
 use App\Models\VisionAndMission;
+use Illuminate\Support\Facades\DB;
 
 class VisionAndMissionController extends Controller
 {
@@ -13,7 +15,8 @@ class VisionAndMissionController extends Controller
      */
     public function index()
     {
-        //
+        $data = VisionAndMission::all();
+        return ResponseFormatter::success($data, 'Vision and mission data retrieved successfully');
     }
 
     /**
@@ -29,7 +32,19 @@ class VisionAndMissionController extends Controller
      */
     public function store(StoreVisionAndMissionRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $visionAndMission = VisionAndMission::create([
+                'vision' => $request->vision,
+                'mission' => $request->mission
+            ]);
+
+            DB::commit();
+            return ResponseFormatter::success($visionAndMission, config('messages.SUCCESS_CREATE'), 201);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -53,7 +68,19 @@ class VisionAndMissionController extends Controller
      */
     public function update(UpdateVisionAndMissionRequest $request, VisionAndMission $visionAndMission)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $visionAndMission->update([
+                'vision' => $request->vision,
+                'mission' => $request->mission
+            ]);
+
+            DB::commit();
+            return ResponseFormatter::success($visionAndMission, config('messages.SUCCESS_UPDATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +88,15 @@ class VisionAndMissionController extends Controller
      */
     public function destroy(VisionAndMission $visionAndMission)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $visionAndMission->delete();
+
+            DB::commit();
+            return ResponseFormatter::success(null, config('messages.SUCCESS_DELETE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 }
