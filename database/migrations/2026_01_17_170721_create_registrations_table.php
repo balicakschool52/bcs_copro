@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('date_of_birth');
             $table->string('phone_number', 16);
             $table->string('email', 100);
+            $table->enum('status', [0, 1])->default('process')->comment('0: process, 1: verified');
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
