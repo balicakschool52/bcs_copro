@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreCategoryAchievementRequest;
 use App\Http\Requests\UpdateCategoryAchievementRequest;
 use App\Models\CategoryAchievement;
+use Illuminate\Support\Facades\DB;
 
 class CategoryAchievementController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryAchievementController extends Controller
      */
     public function index()
     {
-        //
+        $data = CategoryAchievement::all();
+        return ResponseFormatter::success($data, 'Category achievement data retrieved successfully');
     }
 
     /**
@@ -29,7 +32,17 @@ class CategoryAchievementController extends Controller
      */
     public function store(StoreCategoryAchievementRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $categoryAchievement = CategoryAchievement::create([
+                'name' => $request->name
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($categoryAchievement, config('messages.SUCCESS_CREATE'), 201);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -53,7 +66,17 @@ class CategoryAchievementController extends Controller
      */
     public function update(UpdateCategoryAchievementRequest $request, CategoryAchievement $categoryAchievement)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $categoryAchievement->update([
+                'name' => $request->name
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($categoryAchievement, config('messages.SUCCESS_UPDATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +84,14 @@ class CategoryAchievementController extends Controller
      */
     public function destroy(CategoryAchievement $categoryAchievement)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $categoryAchievement->delete();
+            DB::commit();
+            return ResponseFormatter::success(null, config('messages.SUCCESS_DELETE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 }

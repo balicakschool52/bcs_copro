@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryAchievementController;
 use App\Http\Controllers\StudyProgramController;
+use App\Http\Controllers\VisionAndMissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +11,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::resource('study-programs', StudyProgramController::class);
+Route::resource('vision-and-missions', VisionAndMissionController::class);
+Route::resource('category-achievements', CategoryAchievementController::class);
