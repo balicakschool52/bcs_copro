@@ -35,8 +35,8 @@ class VisionAndMissionController extends Controller
         DB::beginTransaction();
         try {
             $visionAndMission = VisionAndMission::create([
-                'vision' => $request->vision,
-                'mission' => $request->mission
+                'description' => $request->description,
+                'type' => $request->type
             ]);
 
             DB::commit();
@@ -71,8 +71,8 @@ class VisionAndMissionController extends Controller
         DB::beginTransaction();
         try {
             $visionAndMission->update([
-                'vision' => $request->vision,
-                'mission' => $request->mission
+                'description' => $request->description,
+                'type' => $request->type
             ]);
 
             DB::commit();
