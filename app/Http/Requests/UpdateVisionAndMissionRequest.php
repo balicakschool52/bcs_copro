@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateVisionAndMissionRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateVisionAndMissionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class UpdateVisionAndMissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description' => ['required', 'string'],
+            'type' => ['required', Rule::in([1, 2])],
         ];
     }
 }
