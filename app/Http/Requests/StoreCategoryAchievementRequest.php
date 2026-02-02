@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCategoryAchievementRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreCategoryAchievementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,7 @@ class StoreCategoryAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', Rule::unique('category_achievements')->whereNull('deleted_at')],
         ];
     }
 }
