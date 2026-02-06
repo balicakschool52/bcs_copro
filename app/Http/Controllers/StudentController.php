@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -13,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $data = Student::all();
+        return ResponseFormatter::success($data, 'Student data retrieved successfully');
     }
 
     /**
@@ -29,7 +32,20 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $student = Student::create([
+                'nim' => $request->nim,
+                'name' => $request->name,
+                'study_program_id' => $request->study_program_id,
+                'user_id' => $request->user_id
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($student, config('messages.SUCCESS_CREATE'), 201);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -53,7 +69,20 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $student->update([
+                'nim' => $request->nim,
+                'name' => $request->name,
+                'study_program_id' => $request->study_program_id,
+                'user_id' => $request->user_id
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($student, config('messages.SUCCESS_UPDATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +90,14 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $student->delete();
+            DB::commit();
+            return ResponseFormatter::success(null, config('messages.SUCCESS_DELETE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 }
