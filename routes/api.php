@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\CategoryAchievementController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\VisionAndMissionController;
@@ -13,3 +14,4 @@ Route::get('/user', function (Request $request) {
 Route::resource('study-programs', StudyProgramController::class);
 Route::resource('vision-and-missions', VisionAndMissionController::class);
 Route::resource('category-achievements', CategoryAchievementController::class);
+Route::resource('achievements', AchievementController::class);
