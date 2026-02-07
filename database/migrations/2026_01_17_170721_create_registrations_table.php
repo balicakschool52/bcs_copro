@@ -23,16 +23,15 @@ return new class extends Migration
             $table->string('previous_school');
             $table->string('graduation_year', 4);
             $table->string('reference');
-            $table->string('referral_code_input', 30)->nullable();
+            $table->string('referral_code_input', 30);
             $table->unsignedBigInteger('registration_fee')->default(0);
             $table->unsignedBigInteger('discount_amount')->default(0);
             $table->unsignedBigInteger('final_amount')->default(0);
-            $table->string('payment_proof')->nullable();
+            $table->string('payment_proof');
             $table->enum('status', ['0', '1'])
                 ->default('0')
                 ->comment('0: process, 1: verified');
             $table->foreignId('code_referal_id')
-                ->nullable()
                 ->constrained('code_referals')
                 ->nullOnDelete();
 

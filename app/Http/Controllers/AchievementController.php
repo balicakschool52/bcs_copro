@@ -16,7 +16,7 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $data = Achievement::all();
+        $data = Achievement::get();
         return ResponseFormatter::success($data, 'Achievement data retrieved successfully');
     }
 

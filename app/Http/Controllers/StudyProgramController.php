@@ -15,7 +15,7 @@ class StudyProgramController extends Controller
      */
     public function index()
     {
-        $studyProgram = StudyProgram::all();
+        $studyProgram = StudyProgram::get();
         return view('admin-page.study-program.index', compact('studyProgram'));
     }
 

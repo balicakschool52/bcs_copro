@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nip', 20);
             $table->string('name');
             $table->string('description');
+            $table->string('photo');
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
