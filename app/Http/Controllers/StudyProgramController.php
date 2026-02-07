@@ -16,7 +16,7 @@ class StudyProgramController extends Controller
     public function index()
     {
         $studyProgram = StudyProgram::all();
-        return ResponseFormatter::success($studyProgram, 'Success get data study program');
+        return view('admin-page.study-program.index', compact('studyProgram'));
     }
 
     /**

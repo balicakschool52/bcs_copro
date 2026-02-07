@@ -30,7 +30,7 @@
                     <div class="relative rounded-3xl overflow-hidden border border-white/10">
                         <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80"
                             alt="Simulasi front office Bali Cak Tourism School"
-                            class="w-full h-full object-cover">
+                            class="w-full h-full object-cover w-max-100 h-max-100">
                         <div class="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
                     </div>
 
