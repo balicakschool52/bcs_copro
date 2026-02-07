@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        @forelse ($studyProgram as $program)
+                        @foreach ($studyProgram as $program)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-4">
@@ -56,13 +56,7 @@
                                     </button>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center py-8 text-gray-500">
-                                    Tidak ada data tersedia.
-                                </td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

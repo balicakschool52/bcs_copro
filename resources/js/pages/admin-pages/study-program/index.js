@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             search: "",
             searchPlaceholder: "Cari program...",
             zeroRecords: "Data tidak ditemukan",
+            emptyTable: "Tidak ada data tersedia.",
             info: "Menampilkan _START_ – _END_ dari _TOTAL_ data",
             infoEmpty: "Tidak ada data",
             paginate: {
@@ -255,3 +256,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
