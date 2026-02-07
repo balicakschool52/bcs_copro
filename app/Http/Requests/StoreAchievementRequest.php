@@ -11,7 +11,7 @@ class StoreAchievementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string'],
+            'date' => ['required', 'date'],
+            'proof' => ['required', 'string'],
+            'photo' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'student_id' => ['required', 'exists:students,id'],
+            'category_achievement_id' => ['required', 'exists:category_achievements,id'],
         ];
     }
 }
