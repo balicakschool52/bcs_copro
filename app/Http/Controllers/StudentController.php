@@ -15,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data = Student::all();
+        $data = Student::get();
         return ResponseFormatter::success($data, 'Student data retrieved successfully');
     }
 
