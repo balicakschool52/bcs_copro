@@ -24,7 +24,7 @@ class StoreCodeReferalRequest extends FormRequest
     {
         return [
             'code' => ['required', 'string', Rule::unique('code_referals')->whereNull('deleted_at')],
-            'discount_type' => ['required',  Rule::in([1, 2])],
+            'discount_type' => ['required',  Rule::in(['1', '2'])],
             'discount_value' => ['required', 'numeric', 'min:0'],
             'start_at' => ['required', 'date'],
             'end_at' => ['required', 'date', 'after:start_at'],
