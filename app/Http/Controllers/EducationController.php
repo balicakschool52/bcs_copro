@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreEducationRequest;
 use App\Http\Requests\UpdateEducationRequest;
 use App\Models\Education;
+use Illuminate\Support\Facades\DB;
 
 class EducationController extends Controller
 {
@@ -13,7 +15,8 @@ class EducationController extends Controller
      */
     public function index()
     {
-        //
+        $data = Education::with(['studyProgram:id,name,grade,is_active'])->get();
+        return ResponseFormatter::success($data, 'Education data retrieved successfully');
     }
 
     /**
@@ -29,7 +32,18 @@ class EducationController extends Controller
      */
     public function store(StoreEducationRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $education = Education::create([
+                'description' => $request->description,
+                'study_program_id' => $request->study_program_id
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($education, config('messages.SUCCESS_CREATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -53,7 +67,18 @@ class EducationController extends Controller
      */
     public function update(UpdateEducationRequest $request, Education $education)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $education->update([
+                'description' => $request->description,
+                'study_program_id' => $request->study_program_id
+            ]);
+            DB::commit();
+            return ResponseFormatter::success($education, config('messages.SUCCESS_UPDATE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +86,14 @@ class EducationController extends Controller
      */
     public function destroy(Education $education)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $education->delete();
+            DB::commit();
+            return ResponseFormatter::success(null, config('messages.SUCCESS_DELETE'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\CategoryAchievementController;
 use App\Http\Controllers\CodeReferalController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudyProgramController;
@@ -21,3 +22,4 @@ Route::resource('study-programs', StudyProgramController::class);
 Route::resource('code-referals', CodeReferalController::class);
 Route::post('code-referals/check', [CodeReferalController::class, 'check']);
 Route::resource('registrations', RegistrationController::class);
+Route::resource('educations', EducationController::class);

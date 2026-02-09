@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreEducationRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreEducationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class StoreEducationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description' => ['required', 'string', Rule::unique('education')->whereNull('deleted_at')],
+            'study_program_id' => ['required', 'exists:study_programs,id'],
         ];
     }
 }
