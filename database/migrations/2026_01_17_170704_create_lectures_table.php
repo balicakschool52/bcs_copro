@@ -14,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('lectures', function (Blueprint $table) {
             $table->id();
-            $table->string('nip', 20);
+            $table->string('nip', 20)->nullable();
             $table->string('name');
-            $table->string('description');
-            $table->string('photo');
-            $table->foreignId('study_program_id')->constrained('study_programs');
+            $table->string('description')->nullable();
+            $table->string('photo')->nullable();
+            $table->foreignId('study_program_id')->nullable()->constrained('study_programs');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
             $table->softDeletes();

@@ -32,9 +32,9 @@ return new class extends Migration
                 ->default('0')
                 ->comment('0: process, 1: verified');
             $table->foreignId('code_referal_id')
+                ->nullable()
                 ->constrained('code_referals')
                 ->nullOnDelete();
-
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
