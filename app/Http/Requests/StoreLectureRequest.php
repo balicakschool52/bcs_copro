@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreLectureRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreLectureRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreLectureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nip' => ['required', 'string', Rule::unique('lectures')->whereNull('deleted_at')],
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'photo' => ['required', 'string'],
+            'study_program_id' => ['required', 'string', 'exists:study_programs,id'],
+            'user_id' => ['required', 'exists:users,id', Rule::unique('lectures')->whereNull('deleted_at')],
         ];
     }
 }
