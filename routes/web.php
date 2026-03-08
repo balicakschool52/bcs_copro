@@ -23,8 +23,8 @@ Route::get('/registration', function () {
     return view('user-page.registration.index');
 });
 
-Route::get('/admin', function () {
-    return view('admin-page.dashboard');
-});
+// Route::get('/admin', function () {
+//     return view('admin-page.dashboard');
+// });
 
-Route::resource('/admin/study-program', StudyProgramController::class);
+// Route::resource('/admin/study-program', StudyProgramController::class);
