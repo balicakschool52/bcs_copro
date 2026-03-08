@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "609021006806f6b413fd3c5b648b12de",
+    "content-hash": "34ec86bd406c79e03d9b7ed7870bc42f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3532,6 +3532,84 @@
                 }
             ],
             "time": "2026-01-02T08:56:05+00:00"
+        },
+        {
+            "name": "muhammadkazimsadiq/filament-quick-edit",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MuhammadKazimSadiq/filament-quick-edit.git",
+                "reference": "107c7c1d7f467a3808e60aae6b3d7df062624979"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MuhammadKazimSadiq/filament-quick-edit/zipball/107c7c1d7f467a3808e60aae6b3d7df062624979",
+                "reference": "107c7c1d7f467a3808e60aae6b3d7df062624979",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^5.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^8.0",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.7|^4.0",
+                "pestphp/pest-plugin-arch": "^3.0|^4.0",
+                "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+                "pestphp/pest-plugin-livewire": "^3.0|^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentQuickEdit": "MuhammadKazimSadiq\\FilamentQuickEdit\\Facades\\FilamentQuickEdit"
+                    },
+                    "providers": [
+                        "MuhammadKazimSadiq\\FilamentQuickEdit\\FilamentQuickEditServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MuhammadKazimSadiq\\FilamentQuickEdit\\": "src/",
+                    "MuhammadKazimSadiq\\FilamentQuickEdit\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Kazim",
+                    "email": "md.kazimsadiq@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Filament plugin to quick-edit/add table rows using modals and filtering form fields.",
+            "homepage": "https://github.com/muhammadkazimsadiq/filament-quick-edit",
+            "keywords": [
+                "MuhammadKazimSadiq",
+                "filament",
+                "filament-plugin",
+                "filament-quick-edit",
+                "filamentphp",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/muhammadkazimsadiq/filament-quick-edit/issues",
+                "source": "https://github.com/muhammadkazimsadiq/filament-quick-edit"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/MuhammadKazimSadiq",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-02T09:52:21+00:00"
         },
         {
             "name": "nesbot/carbon",

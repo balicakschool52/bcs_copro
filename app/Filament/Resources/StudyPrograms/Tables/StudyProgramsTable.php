@@ -10,6 +10,8 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use MuhammadKazimSadiq\FilamentQuickEdit\Actions\QuickEditAction;
+
 
 class StudyProgramsTable
 {
@@ -31,18 +33,15 @@ class StudyProgramsTable
                     ->badge()
                     ->formatStateUsing(fn ($state): string => $state ? 'Active' : 'Inactive')
                     ->color(fn ($state): string => $state ? 'success' : 'gray'),
+
             ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->recordActions([
-                EditAction::make(),
+            ->actions([
+                QuickEditAction::make()
+                    ->selectFields(['name', 'grade', 'is_active']),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
