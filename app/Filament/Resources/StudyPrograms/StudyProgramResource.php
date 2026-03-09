@@ -2,10 +2,8 @@
 
 namespace App\Filament\Resources\StudyPrograms;
 
-use App\Filament\Resources\StudyPrograms\Pages\CreateStudyProgram;
-use App\Filament\Resources\StudyPrograms\Pages\EditStudyProgram;
-use App\Filament\Resources\StudyPrograms\Pages\ListStudyPrograms;
-use App\Filament\Resources\StudyPrograms\Schemas\StudyProgramForm;
+use App\Filament\Resources\StudyPrograms\Pages\ManageStudyPrograms;
+use App\Filament\Resources\StudyPrograms\Schemas\StudyProgramsForm;
 use App\Filament\Resources\StudyPrograms\Tables\StudyProgramsTable;
 use App\Models\StudyProgram;
 use BackedEnum;
@@ -31,7 +29,7 @@ class StudyProgramResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return StudyProgramForm::configure($schema);
+        return StudyProgramsForm::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -39,19 +37,10 @@ class StudyProgramResource extends Resource
         return StudyProgramsTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => ListStudyPrograms::route('/'),
-            'create' => CreateStudyProgram::route('/create'),
-            'edit' => EditStudyProgram::route('/{record}/edit'),
+            'index' => ManageStudyPrograms::route('/'),
         ];
     }
 

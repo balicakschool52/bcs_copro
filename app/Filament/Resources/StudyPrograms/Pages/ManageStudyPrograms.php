@@ -4,9 +4,9 @@ namespace App\Filament\Resources\StudyPrograms\Pages;
 
 use App\Filament\Resources\StudyPrograms\StudyProgramResource;
 use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ManageRecords;
 
-class ListStudyPrograms extends ListRecords
+class ManageStudyPrograms extends ManageRecords
 {
     protected static string $resource = StudyProgramResource::class;
 

@@ -8,7 +8,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Illuminate\Validation\Rules\Unique;
 
-class StudyProgramForm
+class StudyProgramsForm
 {
     public static function configure(Schema $schema): Schema
     {
