@@ -57,6 +57,8 @@ class CodeReferalsTable
                 DeleteAction::make(),
                 ViewAction::make(),
             ])
+            ->emptyStateIcon('heroicon-o-bookmark')
+            ->emptyStateDescription('Once you write your first post, it will appear here.')
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
