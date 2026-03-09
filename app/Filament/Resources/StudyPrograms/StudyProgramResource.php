@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Filament\Resources\StudyPrograms;
+
+use App\Filament\Resources\StudyPrograms\Pages\ManageStudyPrograms;
+use App\Filament\Resources\StudyPrograms\Schemas\StudyProgramsForm;
+use App\Filament\Resources\StudyPrograms\Tables\StudyProgramsTable;
+use App\Models\StudyProgram;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
+
+class StudyProgramResource extends Resource
+{
+    protected static ?string $model = StudyProgram::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
+
+    protected static ?string $recordTitleAttribute = 'StudyProgram';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
+
+    protected static ?string $navigationLabel = 'Study Program';
+
+    public static function form(Schema $schema): Schema
+    {
+        return StudyProgramsForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return StudyProgramsTable::configure($table);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ManageStudyPrograms::route('/'),
+        ];
+    }
+
+    public static function getRecordRouteBindingEloquentQuery(): Builder
+    {
+        return parent::getRecordRouteBindingEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
+}
