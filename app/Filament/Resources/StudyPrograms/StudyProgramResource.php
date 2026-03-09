@@ -15,14 +15,19 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class StudyProgramResource extends Resource
 {
     protected static ?string $model = StudyProgram::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
 
     protected static ?string $recordTitleAttribute = 'StudyProgram';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
+
+    protected static ?string $navigationLabel = 'Study Program';
 
     public static function form(Schema $schema): Schema
     {
