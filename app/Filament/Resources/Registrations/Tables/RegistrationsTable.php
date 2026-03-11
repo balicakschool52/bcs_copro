@@ -10,7 +10,6 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Actions\ViewAction;
 
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -32,7 +31,9 @@ class RegistrationsTable
                 TextColumn::make('place_of_birth')
                     ->label('Birth Info')
                     ->icon('heroicon-m-map-pin')
-                    ->description(fn($record) => Carbon::parse($record->date_of_birth)->format('d M Y'))
+                    ->description(fn($record) => $record->date_of_birth
+                        ? Carbon::parse($record->date_of_birth)->format('d M Y')
+                        : '-')
                     ->searchable(),
 
                 TextColumn::make('phone_number')
@@ -72,13 +73,15 @@ class RegistrationsTable
                 TextColumn::make('status')
                     ->sortable()
                     ->badge()
-                    ->formatStateUsing(fn($state) => match ($state) {
+                    ->formatStateUsing(fn($state) => match ((string) $state) {
                         '0' => 'Process',
                         '1' => 'Verified',
+                        default => 'Unknown',
                     })
-                    ->color(fn($state) => match ($state) {
+                    ->color(fn($state) => match ((string) $state) {
                         '0' => 'warning',
                         '1' => 'success',
+                        default => 'gray',
                     }),
             ])
             ->recordActions([

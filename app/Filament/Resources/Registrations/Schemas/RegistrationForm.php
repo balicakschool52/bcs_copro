@@ -44,12 +44,17 @@ class RegistrationForm
                         '0' => 'Process',
                         '1' => 'Verified',
                     ])
+                    ->formatStateUsing(fn($state) => $state === null ? null : (string) $state)
+                    ->dehydrateStateUsing(fn($state) => $state === null ? null : (string) $state)
                     ->native(false)
                     ->required(),
+
                 Select::make('study_program_id')
                     ->relationship('studyProgram', 'name')
-                    ->required()
                     ->searchable()
+                    ->preload()
+                    ->optionsLimit(5)
+                    ->required()
             ]);
     }
 }

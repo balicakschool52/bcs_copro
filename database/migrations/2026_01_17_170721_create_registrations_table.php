@@ -38,6 +38,10 @@ return new class extends Migration
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'modified_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'deleted_by')->nullable()->constrained('users', 'id');
         });
     }
 

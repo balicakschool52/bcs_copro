@@ -34,9 +34,17 @@ class RegistrationInfolist
 
                         TextEntry::make('status')
                             ->label('Status')
-                            ->formatStateUsing(fn($state) => $state === '1' ? 'Verified' : 'Process')
+                            ->formatStateUsing(fn($state) => match ((string) $state) {
+                                '0' => 'Process',
+                                '1' => 'Verified',
+                                default => 'Unknown',
+                            })
                             ->badge()
-                            ->color(fn($state) => $state === '1' ? 'success' : 'warning'),
+                            ->color(fn($state) => match ((string) $state) {
+                                '0' => 'warning',
+                                '1' => 'success',
+                                default => 'gray',
+                            }),
                     ]),
                 Section::make('Student Information')
                     ->icon('heroicon-m-identification')
@@ -78,15 +86,21 @@ class RegistrationInfolist
 
                         TextEntry::make('registration_fee')
                             ->label('Registration fee')
-                            ->formatStateUsing(fn($state) => 'Rp ' . number_format((float) $state, 0, ',', '.')),
+                            ->formatStateUsing(fn($state) => $state === null
+                                ? '-'
+                                : 'Rp ' . number_format((float) $state, 0, ',', '.')),
 
                         TextEntry::make('discount_amount')
                             ->label('Discount')
-                            ->formatStateUsing(fn($state) => 'Rp ' . number_format((float) $state, 0, ',', '.')),
+                            ->formatStateUsing(fn($state) => $state === null
+                                ? '-'
+                                : 'Rp ' . number_format((float) $state, 0, ',', '.')),
 
                         TextEntry::make('final_amount')
                             ->label('Final amount')
-                            ->formatStateUsing(fn($state) => 'Rp ' . number_format((float) $state, 0, ',', '.')),
+                            ->formatStateUsing(fn($state) => $state === null
+                                ? '-'
+                                : 'Rp ' . number_format((float) $state, 0, ',', '.')),
 
                         ImageEntry::make('payment_proof')
                             ->label('Payment proof')
