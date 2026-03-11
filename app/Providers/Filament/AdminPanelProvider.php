@@ -58,6 +58,9 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 NavigationGroup::make()
                     ->label('Master Data')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Transaction')
                     ->collapsed()
             ])
             ->authMiddleware([

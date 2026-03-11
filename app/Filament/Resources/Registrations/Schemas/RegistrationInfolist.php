@@ -14,82 +14,19 @@ class RegistrationInfolist
     {
         return $schema
             ->components([
-                Section::make('Student')
+                Section::make('Student Registration')
+                    ->icon('heroicon-m-user')
                     ->columns(2)
                     ->schema([
                         TextEntry::make('name')
-                            ->label('Full name'),
+                            ->label('Full Name'),
 
                         TextEntry::make('address')
                             ->columnSpanFull(),
 
-                        Section::make('Student Information')
-                            ->columnSpanFull()
-                            ->schema([
-                                Grid::make(2)
-                                    ->schema([
-                                        TextEntry::make('place_of_birth')
-                                            ->label('Place of birth')
-                                            ->icon('heroicon-m-map-pin'),
-
-                                        TextEntry::make('date_of_birth')
-                                            ->label('Date of birth')
-                                            ->date('d M Y')
-                                            ->icon('heroicon-m-calendar'),
-                                    ]),
-                                Grid::make(2)
-                                    ->schema([
-                                        TextEntry::make('phone_number')
-                                            ->label('Phone number'),
-
-                                        TextEntry::make('email')
-                                            ->label('Email address'),
-                                    ]),
-
-                                Grid::make(2)
-                                    ->schema([
-                                        TextEntry::make('previous_school')
-                                            ->label('Previous school'),
-
-                                        TextEntry::make('graduation_year')
-                                            ->label('Graduation year'),
-                                    ]),
-                            ])
-                            ->extraAttributes([
-                                'class' => 'border rounded-lg p-4 bg-gray-50'
-                            ]),
-                        // Grid::make(2)
-                        //     ->schema([
-                        //         TextEntry::make('place_of_birth')
-                        //             ->label('Place of birth')
-                        //             ->icon('heroicon-m-map-pin'),
-
-                        //         TextEntry::make('date_of_birth')
-                        //             ->label('Date of birth')
-                        //             ->date('d M Y')
-                        //             ->icon('heroicon-m-calendar'),
-                        //     ]),
-
-                        // Grid::make(2)
-                        //     ->schema([
-                        //         TextEntry::make('phone_number')
-                        //             ->label('Phone number'),
-
-                        //         TextEntry::make('email')
-                        //             ->label('Email address'),
-                        //     ]),
-
-                        // Grid::make(2)
-                        //     ->schema([
-                        //         TextEntry::make('previous_school')
-                        //             ->label('Previous school'),
-
-                        //         TextEntry::make('graduation_year')
-                        //             ->label('Graduation year'),
-                        //     ]),
 
                         TextEntry::make('studyProgram.name')
-                            ->label('Study program')
+                            ->label('Study Program')
                             ->badge(),
 
                         TextEntry::make('reference')
@@ -101,8 +38,37 @@ class RegistrationInfolist
                             ->badge()
                             ->color(fn($state) => $state === '1' ? 'success' : 'warning'),
                     ]),
+                Section::make('Student Information')
+                    ->icon('heroicon-m-identification')
+                    ->columns(2)
+                    ->schema([
+                        TextEntry::make('place_of_birth')
+                            ->label('Place of birth')
+                            ->icon('heroicon-m-map-pin'),
+                        TextEntry::make('date_of_birth')
+                            ->label('Date of birth')
+                            ->date('d M Y')
+                            ->icon('heroicon-m-calendar'),
+                        TextEntry::make('phone_number')
+                            ->label('Phone number')
+                            ->icon('heroicon-m-phone'),
+                        TextEntry::make('email')
+                            ->label('Email address')
+                            ->icon('heroicon-m-envelope'),
+                        TextEntry::make('previous_school')
+                            ->label('Previous school')
+                            ->icon('heroicon-m-academic-cap'),
 
-                Section::make('Payment')
+                        TextEntry::make('graduation_year')
+                            ->label('Graduation year')
+                            ->icon('heroicon-m-bookmark'),
+                    ])
+                    ->extraAttributes([
+                        'class' => 'border rounded-lg p-4 bg-gray-50'
+                    ]),
+
+                Section::make('Payment Info')
+                    ->icon('heroicon-m-credit-card')
                     ->columns(2)
                     ->schema([
                         TextEntry::make('codeReferal.code')
