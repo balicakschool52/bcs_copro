@@ -5,9 +5,11 @@ namespace App\Filament\Resources\CodeReferals;
 use App\Filament\Resources\CodeReferals\Pages\ManageCodeReferals;
 use App\Filament\Resources\CodeReferals\Pages\ViewCodeReferal;
 use App\Filament\Resources\CodeReferals\Schemas\CodeReferalsForm;
+use App\Filament\Resources\CodeReferals\Schemas\CodeReferalsInfolist;
 use App\Filament\Resources\CodeReferals\Tables\CodeReferalsTable;
 use App\Models\CodeReferal;
 use BackedEnum;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -37,6 +39,11 @@ class CodeReferalResource extends Resource
     public static function table(Table $table): Table
     {
         return CodeReferalsTable::configure($table);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return CodeReferalsInfolist::configure($schema);
     }
 
     public static function getPages(): array

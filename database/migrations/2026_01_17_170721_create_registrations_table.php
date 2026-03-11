@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('registration_fee')->default(0);
             $table->unsignedBigInteger('discount_amount')->default(0);
             $table->unsignedBigInteger('final_amount')->default(0);
-            $table->string('payment_proof');
+            $table->string('payment_proof')->nullable();
             $table->enum('status', ['0', '1'])
                 ->default('0')
                 ->comment('0: process, 1: verified');
@@ -38,6 +38,10 @@ return new class extends Migration
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'modified_by')->nullable()->constrained('users', 'id');
+            $table->foreignIdFor(User::class, 'deleted_by')->nullable()->constrained('users', 'id');
         });
     }
 

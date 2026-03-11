@@ -38,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
+            ->databaseNotifications()
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
@@ -57,6 +58,9 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 NavigationGroup::make()
                     ->label('Master Data')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Transaction')
                     ->collapsed()
             ])
             ->authMiddleware([

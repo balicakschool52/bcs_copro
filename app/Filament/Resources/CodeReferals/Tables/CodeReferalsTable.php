@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CodeReferals\Tables;
 
+use App\Filament\Resources\CodeReferals\Schemas\CodeReferalsInfolist;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -9,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
+use Filament\Infolists\Infolist;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -25,13 +27,13 @@ class CodeReferalsTable
                     ->searchable(),
                 TextColumn::make('discount_type')
                     ->badge()
-                    ->formatStateUsing(fn($state): string => $state === '1' ? 'Percent' : 'Fixed')
-                    ->color(fn($state): string => $state === '1' ? 'primary' : 'success'),
+                    ->formatStateUsing(fn($state): string => (string) $state === '1' ? 'Percent' : 'Fixed')
+                    ->color(fn($state): string => (string) $state === '1' ? 'primary' : 'success'),
                 TextColumn::make('discount_value')
                     ->numeric()
                     ->sortable()
                     ->formatStateUsing(function ($state, $record) {
-                        if ($record->discount_type === '1') {
+                        if ((string) $record->discount_type === '1') {
                             return $state . ' %';
                         }
 
@@ -55,7 +57,6 @@ class CodeReferalsTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
-                ViewAction::make(),
             ])
             ->emptyStateIcon('heroicon-o-bookmark')
             ->emptyStateDescription('Once you write your first post, it will appear here.')

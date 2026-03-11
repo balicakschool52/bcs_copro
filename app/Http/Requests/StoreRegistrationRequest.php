@@ -71,6 +71,9 @@ class StoreRegistrationRequest extends FormRequest
 
                     if ($final > 0 && !$this->filled('payment_proof')) {
                         $validator->errors()->add('payment_proof', 'Bukti pembayaran wajib.');
+                    } else {
+                        // kalau diskon >= fee, maka payment_proof tidak wajib
+                        $this->merge(['payment_proof' => null]);
                     }
                 } else {
                     // fixed amount discount
@@ -78,8 +81,11 @@ class StoreRegistrationRequest extends FormRequest
                     $discountAmount = (int) $referal->discount_value;
                     $final = $fee - min($discountAmount, $fee);
 
-                    if ($final > 0 && !$this->filled('payment_proof')) {
+                    if ($final > 0) {
                         $validator->errors()->add('payment_proof', 'Bukti pembayaran wajib.');
+                    } else {
+                        // kalau diskon >= fee, maka payment_proof tidak wajib
+                        $this->merge(['payment_proof' => null]);
                     }
                 }
             }
