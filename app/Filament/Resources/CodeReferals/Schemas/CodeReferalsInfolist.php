@@ -18,7 +18,6 @@ class CodeReferalsInfolist
                     ->icon('heroicon-m-book-open')
                     ->columnSpanFull()
                     ->schema([
-
                         Grid::make(3)
                             ->schema([
                                 TextEntry::make('code')
