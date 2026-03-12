@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Filament\Resources\CodeReferals\Pages;
+namespace App\Filament\Resources\VisionAndMissions\Pages;
 
-use App\Filament\Resources\CodeReferals\CodeReferalResource;
+use App\Filament\Resources\VisionAndMissions\VisionAndMissionResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewCodeReferal extends ViewRecord
+class ViewVisionAndMission extends ViewRecord
 {
-    protected static string $resource = CodeReferalResource::class;
+    protected static string $resource = VisionAndMissionResource::class;
 
     public function getTitle(): string
     {
-        return 'Code Referal View';
+        return 'Visi Misi View';
     }
 
     public function getBreadcrumbs(): array
     {
         return [
             route('filament.admin.pages.dashboard') => 'Dashboard',
-            route('filament.admin.resources.code-referals.index') => 'Code Referal',
+            route('filament.admin.resources.vision-and-missions.index') => 'Visi Misi',
             'Detail',
         ];
     }

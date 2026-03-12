@@ -10,6 +10,14 @@ class ManageCategoryAchievements extends ManageRecords
 {
     protected static string $resource = CategoryAchievementResource::class;
 
+    public function getBreadcrumbs(): array
+    {
+        return [
+            route('filament.admin.pages.dashboard') => 'Dashboard',
+            route('filament.admin.resources.category-achievements.index') => 'Category Achievement',
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
