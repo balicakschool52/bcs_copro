@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->text('description');
             $table->foreignId('study_program_id')->constrained('study_programs');
             $table->timestamps();
             $table->softDeletes();
