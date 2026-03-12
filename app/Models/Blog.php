@@ -17,6 +17,7 @@ class Blog extends Model
         'subtitle',
         'description',
         'date',
+        'location',
         'photo',
         'is_active',
     ];

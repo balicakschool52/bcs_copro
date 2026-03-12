@@ -23,6 +23,8 @@ class BlogsInfolist
                         TextEntry::make('date')
                             ->label('Date')
                             ->date('d M Y'),
+                        TextEntry::make('location')
+                            ->label('Location'),
 
                         TextEntry::make('is_active')
                             ->label('Status')

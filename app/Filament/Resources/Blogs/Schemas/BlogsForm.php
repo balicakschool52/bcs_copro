@@ -30,6 +30,8 @@ class BlogsForm
                 DatePicker::make('date')
                     ->native(false)
                     ->required(),
+                TextInput::make('location')
+                    ->required(),
                 FileUpload::make('photo')
                     ->image()
                     ->maxSize(2048)

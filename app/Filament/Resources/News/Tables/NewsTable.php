@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Blogs\Tables;
+namespace App\Filament\Resources\News\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -9,28 +9,26 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BlogsTable
+class NewsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('Blog')
+            ->recordTitleAttribute('News')
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('subtitle')
-                    ->searchable(),
-                TextColumn::make('date')
+                TextColumn::make('date_start')
+                    ->date()
+                    ->sortable(),
+                TextColumn::make('date_end')
                     ->date()
                     ->sortable(),
                 TextColumn::make('location')
                     ->searchable(),
-                ImageColumn::make('photo')
-                    ->height(48),
                 IconColumn::make('is_active')
                     ->boolean(),
             ])
