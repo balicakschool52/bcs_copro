@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Filament\Resources\News\Pages;
+namespace App\Filament\Resources\Settings\Pages;
 
-use App\Filament\Resources\News\NewsResource;
+use App\Filament\Resources\Settings\SettingResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 
-class ManageNews extends ManageRecords
+class ManageSettings extends ManageRecords
 {
-    protected static string $resource = NewsResource::class;
+    protected static string $resource = SettingResource::class;
 
     public function getBreadcrumbs(): array
     {
         return [
             route('filament.admin.pages.dashboard') => 'Dashboard',
-            route('filament.admin.resources.news.index') => 'News',
+            route('filament.admin.resources.settings.index') => 'Setting',
         ];
     }
 

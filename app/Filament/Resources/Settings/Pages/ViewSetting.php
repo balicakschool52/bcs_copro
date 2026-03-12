@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Filament\Resources\Education\Pages;
+namespace App\Filament\Resources\Settings\Pages;
 
-use App\Filament\Resources\Education\EducationResource;
+use App\Filament\Resources\Settings\SettingResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewEducation extends ViewRecord
+class ViewSetting extends ViewRecord
 {
-    protected static string $resource = EducationResource::class;
+    protected static string $resource = SettingResource::class;
 
     public function getTitle(): string
     {
-        return 'Education View';
+        return 'Setting View';
     }
 
     public function getBreadcrumbs(): array
     {
         return [
             route('filament.admin.pages.dashboard') => 'Dashboard',
-            route('filament.admin.resources.education.index') => 'Education',
+            route('filament.admin.resources.settings.index') => 'Setting',
             'Detail',
         ];
     }
