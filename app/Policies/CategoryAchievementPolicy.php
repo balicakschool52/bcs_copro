@@ -13,7 +13,7 @@ class CategoryAchievementPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryAchievementPolicy
      */
     public function view(User $user, CategoryAchievement $categoryAchievement): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryAchievementPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class CategoryAchievementPolicy
      */
     public function update(User $user, CategoryAchievement $categoryAchievement): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryAchievementPolicy
      */
     public function delete(User $user, CategoryAchievement $categoryAchievement): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoryAchievementPolicy
      */
     public function restore(User $user, CategoryAchievement $categoryAchievement): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -61,6 +61,6 @@ class CategoryAchievementPolicy
      */
     public function forceDelete(User $user, CategoryAchievement $categoryAchievement): bool
     {
-        return false;
+        return true;
     }
 }
