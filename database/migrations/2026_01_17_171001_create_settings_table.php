@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('school_name', 100);
             $table->text('address');
             $table->string('telephone', 50);
+            $table->string('email', 100);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained('users', 'id');
