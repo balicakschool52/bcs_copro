@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('subtitle');
             $table->text('description');
             $table->date('date');
+            $table->string('location');
             $table->string('photo', 255);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
