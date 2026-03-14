@@ -16,4 +16,9 @@ class Student extends Model
     use HasFactory, SoftDeletes, GlobalModelRelation;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
