@@ -18,14 +18,19 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class LectureResource extends Resource
 {
     protected static ?string $model = Lecture::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'lucide-book-user';
 
     protected static ?string $recordTitleAttribute = 'Lecture';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
+
+    protected static ?string $navigationLabel = 'Lecture';
 
     public static function form(Schema $schema): Schema
     {

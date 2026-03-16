@@ -19,7 +19,7 @@ class CategoryAchievementResource extends Resource
 {
     protected static ?string $model = CategoryAchievement::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'lucide-tag';
 
     protected static ?string $recordTitleAttribute = 'CategoryAchievement';
 
