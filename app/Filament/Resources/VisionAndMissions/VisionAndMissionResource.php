@@ -25,7 +25,7 @@ class VisionAndMissionResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'VisionAndMission';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
+    protected static string|UnitEnum|null $navigationGroup = 'Content';
 
     protected static ?string $navigationLabel = 'Vision and Mission';
 
