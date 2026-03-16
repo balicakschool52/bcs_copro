@@ -38,7 +38,8 @@ class BlogsInfolist
                 Section::make('Blog Image')
                     ->schema([
                         ImageEntry::make('photo')
-                            ->disabled('label')
+                            ->label('Photo')
+                            ->disk('public')
                             ->height(220)
                             ->columnSpanFull(),
                     ])

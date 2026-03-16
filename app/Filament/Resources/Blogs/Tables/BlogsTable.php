@@ -30,6 +30,7 @@ class BlogsTable
                 TextColumn::make('location')
                     ->searchable(),
                 ImageColumn::make('photo')
+                    ->disk('public')
                     ->height(48),
                 IconColumn::make('is_active')
                     ->boolean(),
