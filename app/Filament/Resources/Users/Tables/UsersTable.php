@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Users\Tables;
 
 use App\Filament\Resources\Users\Support\UserRoleProfileSync;
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -34,9 +35,29 @@ class UsersTable
                         '3' => 'Lecture',
                         '4' => 'Student',
                         default => $state,
+                    })
+                    ->color(fn(string $state): string => match ($state) {
+                        '1' => 'gray',
+                        '2' => 'danger',
+                        '3' => 'warning',
+                        '4' => 'success',
+                        default => 'secondary',
                     }),
             ])
             ->recordActions([
+                Action::make('resetPassword')
+                    ->label('Reset Password')
+                    ->icon('heroicon-m-key')
+                    ->color('warning')
+                    ->requiresConfirmation()
+                    ->modalHeading('Reset password user?')
+                    ->modalDescription('Password user akan dikembalikan ke default: balicak2026.')
+                    ->action(function (User $record): void {
+                        $record->update([
+                            'password' => 'balicak2026',
+                        ]);
+                    })
+                    ->successNotificationTitle('Password berhasil direset ke default.'),
                 EditAction::make()
                     ->mutateRecordDataUsing(fn(array $data, User $record): array => UserRoleProfileSync::fillEditPayload($data, $record))
                     ->using(function (array $data, User $record): User {
