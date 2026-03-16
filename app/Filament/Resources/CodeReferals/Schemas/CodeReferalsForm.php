@@ -10,6 +10,7 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use App\Models\CodeReferal;
 use Filament\Support\RawJs;
+use Illuminate\Validation\Rules\Unique;
 
 class CodeReferalsForm
 {
@@ -24,6 +25,7 @@ class CodeReferalsForm
                         table: CodeReferal::class,
                         column: 'code',
                         ignorable: fn(?CodeReferal $record) => $record,
+                        modifyRuleUsing: fn(Unique $rule) => $rule->whereNull('deleted_at'),
                     ),
                 Select::make('discount_type')
                     ->options([1 => 'Percent', 2 => 'Fixed'])

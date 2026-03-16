@@ -13,7 +13,7 @@ class LecturePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class LecturePolicy
      */
     public function view(User $user, Lecture $lecture): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class LecturePolicy
      */
     public function update(User $user, Lecture $lecture): bool
     {
-        return false;
+        return true;
     }
 
     /**

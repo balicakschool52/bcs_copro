@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('code_referals', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 30)->unique();
+            $table->string('code', 30);
             $table->enum('discount_type', ['1', '2'])->comment('1: percent, 2: fixed');
             $table->unsignedInteger('discount_value'); // 10 = 10% | 50000 = Rp50.000
             $table->timestamp('start_at')->nullable();
