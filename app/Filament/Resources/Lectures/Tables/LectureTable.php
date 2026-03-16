@@ -31,9 +31,6 @@ class LectureTable
                     ->height(48),
                 TextColumn::make('studyProgram.name')
                     ->searchable(),
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
             ])
             ->recordActions([
                 EditAction::make(),
