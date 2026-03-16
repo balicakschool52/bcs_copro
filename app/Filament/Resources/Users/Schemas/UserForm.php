@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Validation\Rules\Unique;
 
 class UserForm
 {
@@ -20,12 +21,19 @@ class UserForm
                     ->schema([
                         TextInput::make('name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->unique(
+                                ignoreRecord: true,
+                                modifyRuleUsing: fn(Unique $rule) => $rule->whereNull('deleted_at'),
+                            ),
 
                         TextInput::make('email')
                             ->email()
                             ->required()
-                            ->unique(ignoreRecord: true),
+                            ->unique(
+                                ignoreRecord: true,
+                                modifyRuleUsing: fn(Unique $rule) => $rule->whereNull('deleted_at'),
+                            ),
 
                         Select::make('role')
                             ->options([
@@ -50,7 +58,10 @@ class UserForm
                         TextInput::make('nim')
                             ->label('NIM')
                             ->maxLength(20)
-                            ->required(fn(Get $get): bool => (string) $get('role') === '4'),
+                            ->required(fn(Get $get): bool => (string) $get('role') === '4')
+                            ->rule(function () {
+                                return (new Unique('students', 'nim'))->whereNull('deleted_at');
+                            }),
                         Select::make('study_program_id')
                             ->label('Study Program')
                             ->options(fn(): array => StudyProgram::query()->pluck('name', 'id')->all())
@@ -65,7 +76,10 @@ class UserForm
                         TextInput::make('nip')
                             ->label('NIP')
                             ->maxLength(20)
-                            ->required(fn(Get $get): bool => (string) $get('role') === '3'),
+                            ->required(fn(Get $get): bool => (string) $get('role') === '3')
+                            ->rule(function () {
+                                return (new Unique('lectures', 'nip'))->whereNull('deleted_at');
+                            }),
                         Select::make('study_program_id')
                             ->label('Study Program')
                             ->options(fn(): array => StudyProgram::query()->pluck('name', 'id')->all())
