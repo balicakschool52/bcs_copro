@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use App\Models\StudyProgram;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -18,6 +19,7 @@ class UserForm
         return $schema
             ->components([
                 Section::make('User')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
                             ->required()
@@ -46,17 +48,18 @@ class UserForm
                             ->live()
                             ->native(false),
 
-                        TextInput::make('password')
-                            ->password()
-                            ->dehydrated(fn($state) => filled($state))
-                            ->required(fn(string $operation): bool => $operation === 'create')
-                            ->dehydrateStateUsing(fn($state) => filled($state) ? bcrypt($state) : null),
+                        Hidden::make('password')
+                            ->default('balicak2026')
+                            ->dehydrated(fn(?string $state, string $operation): bool => $operation === 'create' && filled($state))
+                            ->dehydrateStateUsing(fn(?string $state): ?string => filled($state) ? bcrypt($state) : null),
                     ]),
 
                 Section::make('Student Information')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('nim')
                             ->label('NIM')
+                            ->numeric()
                             ->maxLength(20)
                             ->required(fn(Get $get): bool => (string) $get('role') === '4')
                             ->rule(function () {
@@ -72,8 +75,10 @@ class UserForm
                     ->visible(fn(Get $get): bool => (string) $get('role') === '4'),
 
                 Section::make('Lecture Information')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('nip')
+                            ->numeric()
                             ->label('NIP')
                             ->maxLength(20)
                             ->required(fn(Get $get): bool => (string) $get('role') === '3')

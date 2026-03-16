@@ -25,7 +25,7 @@ class EducationResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'Education';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
+    protected static string|UnitEnum|null $navigationGroup = 'Content';
 
     protected static ?string $navigationLabel = 'Education';
 
