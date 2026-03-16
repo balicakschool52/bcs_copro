@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Lectures\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,9 +18,16 @@ class LectureForm
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('description'),
-                TextInput::make('photo'),
                 Select::make('study_program_id')
                     ->relationship('studyProgram', 'name'),
+
+                FileUpload::make('photo')
+                    ->image()
+                    ->maxSize(2048)
+                    ->disk('public')
+                    ->directory('lecture')
+                    ->visibility('public')
+                    ->required(),
             ]);
     }
 }

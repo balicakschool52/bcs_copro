@@ -26,10 +26,13 @@ class UserObserver
     }
 
     /**
-     * Handle the User "deleted" event.
+     * Handle the User "deleting" event.
      */
-    public function deleted(User $user): void
+    public function deleting(User $user): void
     {
+        $user->student()->delete();
+        $user->lecture()->delete();
+
         $user->modified_by = Auth::user()?->id;
         $user->deleted_by = Auth::user()?->id;
         $user->saveQuietly();
@@ -40,7 +43,8 @@ class UserObserver
      */
     public function restored(User $user): void
     {
-        //
+        $user->student()->withTrashed()->restore();
+        $user->lecture()->withTrashed()->restore();
     }
 
     /**

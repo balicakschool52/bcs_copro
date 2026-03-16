@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Lectures\Schemas;
 
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -13,7 +14,6 @@ class LectureInfolist
         return $schema
             ->components([
                 Section::make('Lecture Detail')
-                    ->columnSpanFull()
                     ->schema([
                         TextEntry::make('nip')
                             ->label('NIP')
@@ -23,14 +23,20 @@ class LectureInfolist
                         TextEntry::make('studyProgram.name')
                             ->label('Study Program')
                             ->placeholder('-'),
-                        TextEntry::make('user_id')
-                            ->label('User ID'),
                         TextEntry::make('description')
                             ->label('Description')
                             ->placeholder('-'),
-                        TextEntry::make('photo')
+                    ]),
+                Section::make('Lecture Image')
+                    ->schema([
+                        ImageEntry::make('photo')
                             ->label('Photo')
-                            ->placeholder('-'),
+                            ->disk('public')
+                            ->height(220)
+                            ->columnSpanFull(),
+                    ])
+                    ->extraAttributes([
+                        'class' => 'h-full'
                     ]),
             ]);
     }
