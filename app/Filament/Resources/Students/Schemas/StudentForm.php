@@ -8,6 +8,7 @@ use Filament\Schemas\Schema;
 
 class StudentForm
 {
+    //this fillament form schema is used in the create and edit page of the student resource
     public static function configure(Schema $schema): Schema
     {
         return $schema
