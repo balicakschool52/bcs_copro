@@ -9,7 +9,13 @@ const pages = glob.sync("resources/js/pages/**/*.js");
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/css/app.css", "resources/js/app.js", ...pages],
+            input: [
+                "resources/css/app.css",
+                "resources/js/app.js",
+                "resources/js/registration/form-handler.js",
+                "resources/js/registration/referral.js",
+                "resources/js/registration/load-studyprogram.js",
+                ...pages],
             refresh: true,
         }),
         tailwindcss(),

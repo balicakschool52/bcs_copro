@@ -38,7 +38,7 @@ class RegistrationForm
                 TextInput::make('reference')
                     ->required(),
                 FileUpload::make('payment_proof')
-                    ->directory('payment-proof'),
+                    ->directory('payment_proof'),
                 Select::make('status')
                     ->options([
                         '0' => 'Process',

@@ -96,4 +96,14 @@ class StudyProgramController extends Controller
             return ResponseFormatter::error(null, $th->getMessage());
         }
     }
+
+    public function getStudyPrograms()
+    {
+        try {
+            $studyPrograms = StudyProgram::select('id', 'name')->get();
+            return ResponseFormatter::success($studyPrograms, 'Data program studi berhasil diambil.');
+        } catch (\Throwable $th) {
+            return ResponseFormatter::error(null, $th->getMessage());
+        }
+    }
 }

@@ -33,10 +33,10 @@ class StoreRegistrationRequest extends FormRequest
             'email' => ['required', 'email', 'max:100', Rule::unique('registrations')->whereNull('deleted_at')],
             'previous_school' => ['required', 'string', 'max:255'],
             'graduation_year' => ['required', 'digits:4'],
-            'study_program_id' => ['required', 'integer', 'exists:study_programs,id'],
-            'reference' => ['required', 'string', 'max:255'],
+            'study_program_id' => ['required', 'integer'],
+            'reference' => ['nullable', 'string', 'max:255'],
             'referral_code' => ['nullable', 'string', 'max:30'],
-            'payment_proof' => ['nullable', 'string', 'max:255'],
+            'payment_proof' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
     }
 
@@ -45,6 +45,9 @@ class StoreRegistrationRequest extends FormRequest
         return [
             'name.unique' => 'Nama sudah digunakan.',
             'email.unique' => 'Email sudah digunakan.',
+            'payment_proof.image' => 'File harus berupa gambar.',
+            'payment_proof.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+            'payment_proof.max' => 'Ukuran gambar maksimal adalah 2MB.',
         ];
     }
 
@@ -69,11 +72,8 @@ class StoreRegistrationRequest extends FormRequest
                     $discountAmount = (int) floor($fee * ((int) $referal->discount_value / 100));
                     $final = $fee - min($discountAmount, $fee);
 
-                    if ($final > 0 && !$this->filled('payment_proof')) {
+                    if ($final > 0 && !$this->hasFile('payment_proof')) {
                         $validator->errors()->add('payment_proof', 'Bukti pembayaran wajib.');
-                    } else {
-                        // kalau diskon >= fee, maka payment_proof tidak wajib
-                        $this->merge(['payment_proof' => null]);
                     }
                 } else {
                     // fixed amount discount
