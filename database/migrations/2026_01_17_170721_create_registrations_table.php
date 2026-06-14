@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('email', 100);
             $table->string('previous_school');
             $table->string('graduation_year', 4);
-            $table->string('reference');
-            $table->string('referral_code_input', 30);
+            $table->string('reference')->nullable();
+            $table->string('referral_code_input', 30)->nullable();
             $table->unsignedBigInteger('registration_fee')->default(0);
             $table->unsignedBigInteger('discount_amount')->default(0);
             $table->unsignedBigInteger('final_amount')->default(0);

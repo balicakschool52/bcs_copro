@@ -6,11 +6,13 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
 use App\Models\Registration;
+use App\Traits\ImageUploadTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class RegistrationController extends Controller
 {
+    use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      */
@@ -91,6 +93,11 @@ class RegistrationController extends Controller
 
             $final = $fee - $discountAmount;
 
+            $fileName = null;
+            if ($request->hasFile('payment_proof')) {
+                $fileName = $this->uploadImage($request->file('payment_proof'), 'payment_proof');
+            }
+
             $registrationId = DB::table('registrations')->insertGetId([
                 'name' => $data['name'],
                 'address' => $data['address'],
@@ -111,8 +118,7 @@ class RegistrationController extends Controller
                 'registration_fee' => $fee,
                 'discount_amount' => $discountAmount,
                 'final_amount' => $final,
-                'payment_proof' => $data['payment_proof'] ?? null,
-
+                'payment_proof' => $fileName,
                 'status' => '0',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -127,6 +133,7 @@ class RegistrationController extends Controller
                 'discount' => $discountAmount,
                 'final' => $final,
                 'referral_code' => $code,
+                'payment_proof' => $fileName,
             ], 'Pendaftaran berhasil.');
         } catch (\Throwable $th) {
             DB::rollBack();
