@@ -3,11 +3,13 @@
 @section('title', 'Homepage | Bali Cak Tourism School')
 
 @section('content')
-    <section class="bg-[#2B2B28] w-full min-h-screen flex items-center scroll-mt-24">
-        <div class="container mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-16 md:pt-14">
+    <section class="relative overflow-hidden bg-[#2B2B28] w-full min-h-screen flex items-center scroll-mt-24"
+        style="background-image: url('{{ asset('images/ornamen-pura2.png') }}'); background-repeat: no-repeat; background-position: center bottom; background-size: 100% auto;">
+        <div class="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-16 md:pt-14">
             <div class="grid md:grid-cols-2 gap-10 lg:gap-12 items-center">
                 <div class="space-y-6 text-center md:text-left">
-                    <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">Bali Cak Tourism School
+                    <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
+                        Bali Cak Tourism School
                     </p>
                     <h1 class="text-4xl md:text-5xl font-semibold text-white leading-tight">
                         Quality Assurance For a Bright Future
@@ -73,8 +75,8 @@
             </div>
         </div>
     </section>
-    <section id="about-us" class="min-h-screen flex flex-col justify-center scroll-mt-24">
-        <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-20">
+    <section id="about-us" class="relative min-h-screen flex flex-col justify-center scroll-mt-24 overflow-hidden">
+        <div class="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-20">
             <div class="grid md:grid-cols-2 gap-10 lg:gap-12 items-center">
                 <div class="space-y-6 text-center md:text-left">
                     <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase text-left">About Us
@@ -105,11 +107,15 @@
                     <div class="relative p-6 lg:p-10 z-10">
                         <img src="{{ asset('images/about1.png') }}" alt="about-section" class="h-full w-full ">
                     </div>
+                    <div class="relative flex justify-center px-4" aria-hidden="true">
+                        <img src="{{ asset('images/ornamen-barong.png') }}" alt=""
+                            class="h-auto w-full max-w-[34rem] object-contain opacity-80" />
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="w-full h-30 bg-[#2B2B28] "></div>
+    <div class="w-full h-30 bg-[#2B2B28]"></div>
     <section id="education" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden -mt-1">
         <!-- Decorative Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -133,9 +139,6 @@
                     Our study programs are designed with a practical approach and grounded in industry needs, ensuring that
                     graduates are fully equipped to compete in the real world.
                 </p>
-                <div class="flex justify-center mt-6">
-                    <span class="w-24 h-0.5 bg-linear-to-r from-transparent via-[#E3B04B] to-transparent"></span>
-                </div>
             </div>
 
             <!-- Konten edukasi nanti di sini -->
@@ -261,7 +264,7 @@
         </div>
     </section>
 
-    <section id="achievement" class="relative min-h-screen scroll-mt-24  overflow-hidden">
+    <section id="achievement" class="relative min-h-screen scroll-mt-24 overflow-hidden">
         <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
             <div class="text-start space-y-4 mb-10 md:mb-16">
                 <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
@@ -337,7 +340,11 @@
             </div>
         </div>
     </section>
-    <section id="lecture" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden">
+    <section id="lecture" class="relative min-h-screen scroll-mt-24 bg-[#2B2B28] overflow-hidden"
+        style="background-image: url('{{ asset('images/barong-2.png') }}'); background-repeat: no-repeat; background-position: right bottom; background-size: clamp(22rem, 45vw, 38rem) auto;">
+        <div class="absolute bottom-0 right-0 z-0 h-10 w-[clamp(22rem,45vw,38rem)] opacity-30 mix-blend-screen pointer-events-none"
+            style="background-color: #f5f1e8; background-image: conic-gradient(#2B2B28 25%, transparent 0 50%, #2B2B28 0 75%, transparent 0); background-size: 1.25rem 1.25rem;"
+            aria-hidden="true"></div>
         <div class="container mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-20">
             <div class="text-center space-y-4 mb-10 md:mb-16">
                 <p class="text-md font-semibold tracking-[0.3em] text-[#E3B04B] uppercase">
